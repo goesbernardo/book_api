@@ -24,12 +24,11 @@ public class SecurityConfiguration {
                 .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize->
                         authorize
-                                .requestMatchers(HttpMethod.POST,"/authentication/login").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/v1/book/hireBook").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/v1/book").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/api/v1/book/id").permitAll()
-                                .anyRequest()
-                                .authenticated())
+                                .requestMatchers("/**").permitAll()
+                                .requestMatchers("/h2-console/**").permitAll()// Permit all requests
+                                .anyRequest().authenticated())
+
+
                 .build();
     }
 
@@ -39,6 +38,7 @@ public class SecurityConfiguration {
     }
 
     public PasswordEncoder passwordEncoder(){
+
         return new BCryptPasswordEncoder();
     }
 
