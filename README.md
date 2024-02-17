@@ -1,1 +1,8 @@
 # book_api
+
+* JAVA VERSION 17 
+* SPRING SECURITY
+* MAPSTRUCT
+* UNIT TEST
+* REST
+  
