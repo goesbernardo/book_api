@@ -1,7 +1,7 @@
 package com.goesbernardo.book_api.controller;
 
 import com.goesbernardo.book_api.dto.BookRecord;
-import com.goesbernardo.book_api.service.BookService;
+import com.goesbernardo.book_api.services.BookService;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

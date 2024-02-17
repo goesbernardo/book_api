@@ -1,7 +1,7 @@
 package com.goesbernardo.book_api.mapper;
 
 import com.goesbernardo.book_api.dto.BookRecord;
-import com.goesbernardo.book_api.model.Book;
+import com.goesbernardo.book_api.domain.Book;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

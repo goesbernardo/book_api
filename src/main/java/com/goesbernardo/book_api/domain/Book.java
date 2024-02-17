@@ -1,4 +1,4 @@
-package com.goesbernardo.book_api.model;
+package com.goesbernardo.book_api.domain;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

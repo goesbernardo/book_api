@@ -1,9 +1,6 @@
-package com.goesbernardo.book_api.service;
+package com.goesbernardo.book_api.services;
 
 import com.goesbernardo.book_api.dto.BookRecord;
-import com.goesbernardo.book_api.model.Book;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 

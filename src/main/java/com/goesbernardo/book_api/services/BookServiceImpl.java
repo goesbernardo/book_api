@@ -1,8 +1,8 @@
-package com.goesbernardo.book_api.service;
+package com.goesbernardo.book_api.services;
 
 import com.goesbernardo.book_api.dto.BookRecord;
 import com.goesbernardo.book_api.mapper.BookMapper;
-import com.goesbernardo.book_api.model.Book;
+import com.goesbernardo.book_api.domain.Book;
 import com.goesbernardo.book_api.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
