@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @Transactional(readOnly = true)
-public class BookServiceImpl implements BookService{
+public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
@@ -24,21 +24,20 @@ public class BookServiceImpl implements BookService{
     public List<Book> getAll() {
 
         List<Book> bookList = bookRepository.findAll();
-        if (bookList == null){
+        if (bookList == null) {
             throw new BookException("ocorreu um erro na requisicao");
         }
         return bookList;
 
     }
+
     @Override
     public BookRecord getBookById(Long id) {
-
-        return bookRepository.findById(id).stream().map(bookMapper::toDto).findFirst().orElseThrow(()-> new RuntimeException("book not found"));
-   }
+        return bookRepository.findById(id).stream().map(bookMapper::toDto).findFirst().orElseThrow(() -> new RuntimeException("book not found"));
+    }
 
     @Override
     public BookRecord createHireBook(BookRecord record) {
-
         Book book = bookMapper.toModel(record);
         Book bookCreated = bookRepository.save(book);
         return bookMapper.toDto(bookCreated);
@@ -48,10 +47,9 @@ public class BookServiceImpl implements BookService{
     public BookRecord getHireBookUnavailable(BookRecord bookRecord) {
 
         BookRecord bookById = this.getBookById(bookRecord.getId());
-        if (!bookById.getName().isEmpty()){
+        if (!bookById.getName().isEmpty()) {
             throw new RuntimeException("informação já existente no banco de dados , não é possível alugar o livro");
-        }
-        else {
+        } else {
             return bookById;
         }
     }
@@ -59,21 +57,17 @@ public class BookServiceImpl implements BookService{
     @Override
     public BookRecord updateBook(Long bookId, BookRecord bookRecord) {
 
-        Book book = bookRepository.findById(bookId).orElseThrow(()-> new RuntimeException("livro não encontrado"));
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new RuntimeException("livro não encontrado"));
         book.setTitle(bookRecord.getTitle());
         book.setAuthor(bookRecord.getAuthor());
         book.setIsbn(bookRecord.getIsbn());
-
         Book bookUpdate = bookRepository.save(book);
 
         return bookMapper.toDto(bookUpdate);
-
-
     }
 
     @Override
     public void deleteBook(Long id) {
-
-         bookRepository.deleteById(id);
+        bookRepository.deleteById(id);
     }
 }
