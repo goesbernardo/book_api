@@ -20,12 +20,14 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         return httpSecurity
+
                 .csrf(crsf -> crsf.disable())
+                .headers(httpSecurityHeadersConfigurer -> httpSecurityHeadersConfigurer
+                        .frameOptions(frameOptionsConfig -> frameOptionsConfig.disable()))
                 .sessionManagement(session ->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(authorize->
-                        authorize
+                .authorizeHttpRequests(authorize-> authorize
                                 .requestMatchers("/**").permitAll()
-                                .requestMatchers("/h2-console/**").permitAll()// Permit all requests
+                                .requestMatchers(HttpMethod.GET, "/h2-console/**").permitAll()// Permit all requests
                                 .anyRequest().authenticated())
 
 

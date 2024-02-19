@@ -1,15 +1,15 @@
 package com.goesbernardo.book_api.services;
 
-import com.goesbernardo.book_api.dto.BookRecord;
-import com.goesbernardo.book_api.mapper.BookMapper;
 import com.goesbernardo.book_api.domain.Book;
+import com.goesbernardo.book_api.dto.BookRecord;
+import com.goesbernardo.book_api.exception.BookException;
+import com.goesbernardo.book_api.mapper.BookMapper;
 import com.goesbernardo.book_api.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional(readOnly = true)
@@ -21,13 +21,13 @@ public class BookServiceImpl implements BookService{
     private final static BookMapper bookMapper = BookMapper.INSTANCE;
 
     @Override
-    public List<BookRecord> getAll() {
+    public List<Book> getAll() {
 
-        try {
-            return bookRepository.findAll().stream().map(bookMapper::toDto).collect(Collectors.toList());
-        }catch (Exception e) {
-            throw new RuntimeException();
+        List<Book> bookList = bookRepository.findAll();
+        if (bookList == null){
+            throw new BookException("ocorreu um erro na requisicao");
         }
+        return bookList;
 
     }
     @Override

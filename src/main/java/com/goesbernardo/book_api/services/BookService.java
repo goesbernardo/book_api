@@ -1,12 +1,13 @@
 package com.goesbernardo.book_api.services;
 
+import com.goesbernardo.book_api.domain.Book;
 import com.goesbernardo.book_api.dto.BookRecord;
 
 import java.util.List;
 
 public interface BookService {
 
-    List<BookRecord> getAll();
+    List<Book> getAll();
 
     BookRecord getBookById(Long id);
 

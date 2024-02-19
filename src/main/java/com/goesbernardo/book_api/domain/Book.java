@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Builder@Table(name = "TB_BOOK")
-
+@Builder
+@Table(name = "TB_BOOK")
 public class Book {
 
     @Id

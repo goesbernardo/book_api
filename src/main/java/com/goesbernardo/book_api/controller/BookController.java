@@ -1,5 +1,6 @@
 package com.goesbernardo.book_api.controller;
 
+import com.goesbernardo.book_api.domain.Book;
 import com.goesbernardo.book_api.dto.BookRecord;
 import com.goesbernardo.book_api.services.BookService;
 import jakarta.validation.Valid;
@@ -24,10 +25,10 @@ public class BookController {
 
 
     @GetMapping
-    public ResponseEntity<List<BookRecord>> findAll() {
+    public ResponseEntity<List<Book>> findAll() {
 
         logger.info("start process");
-        List<BookRecord> records = bookService.getAll();
+        List<Book> records = bookService.getAll();
         return ResponseEntity.ok().body(records);
     }
 
